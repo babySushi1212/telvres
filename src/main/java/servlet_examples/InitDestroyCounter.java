@@ -65,6 +65,7 @@ public class InitDestroyCounter extends HttpServlet {
         FileWriter fileWriter = null;
         PrintWriter printWriter = null;
         try {
+            // this will save uunder apache-tomcat-2.x.xx/bin
             fileWriter = new FileWriter("InitDestroyCounter.initial");
             printWriter = new PrintWriter(fileWriter);
             printWriter.println(count);
