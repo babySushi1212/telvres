@@ -2,8 +2,11 @@ package servlet_examples;
 
 import java.io.*;
 import java.sql.*;
+import javax.naming.Context;
+import javax.naming.NamingException;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.sql.DataSource;
 
 public class DBPhoneLookup extends HttpServlet {
 
@@ -17,15 +20,10 @@ public class DBPhoneLookup extends HttpServlet {
         PrintWriter out = res.getWriter();
 
         try {
-            // Load (and therefore register) the JDBC Driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Get a Connection to the database
-//      con = DriverManager.getConnection(
-//        "theURL", "user", "passwd");
-            con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/db01?serverTimezone=Asia/Taipei", "root", "abcd1234");
-
+            Context ctx = new javax.naming.InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+            con = ds.getConnection();
 
             // Create a Statement object
             stmt = con.createStatement();
@@ -44,10 +42,10 @@ public class DBPhoneLookup extends HttpServlet {
             }
             out.println("</UL>");
             out.println("</BODY></HTML>");
-        } catch (ClassNotFoundException e) {
-            out.println("Couldn't load database driver: " + e.getMessage());
         } catch (SQLException e) {
             out.println("SQLException caught: " + e.getMessage());
+        } catch (NamingException e) {
+            throw new RuntimeException(e);
         } finally {
             // Always close the database connection.
             try {
