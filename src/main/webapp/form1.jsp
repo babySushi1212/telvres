@@ -10,8 +10,8 @@
 
 <FORM METHOD="get" ACTION="Hello">
 
-    ╜╨┐щдJ▒zк║жWжr!
-    <INPUT TYPE="TEXT" NAME="name" VALUE="peter1зdе├з╙">
+    шлЛш╝╕хЕецВичЪДхРНхнЧ!
+    <INPUT TYPE="TEXT" NAME="name" VALUE="peter1">
     <P>
         <INPUT TYPE="SUBMIT">
 </FORM>
@@ -20,8 +20,8 @@
 
 <table border="1" bordercolor="blue">
     <tr>
-        <th>╝╞жr</th>
-        <th>ендш</th>
+        <th>цХ╕хнЧ</th>
+        <th>х╣│цЦ╣</th>
     </tr>
 
     <% for (int i = 0; i < 10; i++) { %>
