@@ -9,8 +9,8 @@
 <%
     pageContext.setAttribute("customer", "peter1");
     request.setAttribute("customer", "peter2");
-    session.setAttribute("customer", "peter3");
-    application.setAttribute("customer", "peter4");
+    session.setAttribute("customer", "peter3"); // detect change when session timeout or close
+    application.setAttribute("customer", "peter4"); // detect change when server is restarted
 %>
 <html>
 <head><title>Test_scope.jsp</title></head>
